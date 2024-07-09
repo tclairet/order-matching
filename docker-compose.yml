@@ -1,0 +1,29 @@
+services:
+  database:
+    image: "postgres:latest"
+    environment:
+      POSTGRES_USER: tranched
+      POSTGRES_PASSWORD: password
+      PGPORT: 5432
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5432:5432"
+
+  tranched:
+    depends_on:
+      database:
+        condition: service_healthy
+    build:
+      dockerfile: $PWD/Dockerfile
+    image: tranched
+    environment:
+      PORT: 8080
+      DB_URL: postgres://tranched:password@database:5432/tranched?sslmode=disable
+    ports:
+      - '8080:8080'
