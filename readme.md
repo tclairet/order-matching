@@ -50,3 +50,10 @@ The database is seeded with some prefunded accounts:
 - user 'admin' (repeat username as password) with 0 USD and 10000 EUR
 
 For more details check `config.go`
+
+## Limitation
+There is some todo in the code, but to summarise:
+- verify the status of the order in db before marking it has `filled`
+- sanitize user inputs (asset, pair, amount, username, ...) 
+- use a sliding window for matchMaker in `VerifyMatch`, because `match(order)` is o(n) but we call it n time in `VerifyMatch` 
+- node should have prev pointer, that would simplify the readability
