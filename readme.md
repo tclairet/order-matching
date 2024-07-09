@@ -44,10 +44,10 @@ curl -u user2:password2 http://localhost:8080/orders
 ## Seed
 
 The database is seeded with some prefunded accounts:
-- user '1' and user '2' (repeat username as password) have pre seeded matching order 
-- user '3' to '10' (repeat username as password) with 10000 USD and EUR
-- user 'user', 'user1' and 'user2' with password 'password', 'password1' and 'password2' and with 10000 USD and EUR
-- user 'admin' (repeat username as password) with 0 USD and 10000 EUR
+- users `1` and `2` (repeat username as password) have pre seeded matching order 
+- users `3` to `10` (repeat username as password) with 10000 USD and EUR
+- users `user`, `user1` and `user2` with password `password`, `password1` and `password2` and with 10000 USD and EUR
+- user `admin` (repeat username as password) with 0 USD and 10000 EUR
 
 For more details check `config.go`
 
